@@ -17,7 +17,7 @@ class App extends React.Component {
 	}
 
 	handleChange = e => {
-		console.log(e.target.value)
+		// console.log(e.target.value)
 		this.setState({
 			newInput: e.target.value
 		})
@@ -30,7 +30,7 @@ class App extends React.Component {
 		} else {
 			const newID =
 				this.state.todos[this.state.todos.length - 1].id + 1
-			console.log(newID)
+			// console.log(newID)
 			return newID
 		}
 	}
@@ -53,7 +53,20 @@ class App extends React.Component {
 		})
 	}
 
+	deleteTodo = index => {
+		const todoIdToDelete = this.state.todos[index].id
+		const actualTodos = this.state.todos
+		const finalTodos = actualTodos.filter(
+			todo => todo.id !== todoIdToDelete
+		)
+
+		this.setState({
+			todos: finalTodos
+		})
+	}
+
 	render() {
+		// console.log(this.state.todos)
 		return (
 			<div className="container p-3">
 				<div className="jumbotron p-2">
@@ -67,7 +80,10 @@ class App extends React.Component {
 					newInput={this.state.newInput}
 				/>
 
-				<TodoList todos={this.state.todos} />
+				<TodoList
+					todos={this.state.todos}
+					deleteTodo={this.deleteTodo}
+				/>
 				<br />
 			</div>
 		)

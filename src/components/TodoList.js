@@ -4,7 +4,12 @@ import Filter from "./Filter"
 import Search from "./Search"
 
 class TodoList extends React.Component {
+	// constructor(props) {
+	// 	super(props)
+	// }
+
 	render() {
+		const { todos, deleteTodo } = this.props
 		return (
 			<div className="card">
 				<div className="card-header d-flex flex-row align-items-center">
@@ -21,8 +26,12 @@ class TodoList extends React.Component {
 
 				<div className="card-body">
 					<ul className="list-group">
-						{this.props.todos.map(todo => (
-							<TodoItem key={todo.id} todo={todo} />
+						{todos.map((todo, index) => (
+							<TodoItem
+								key={todo.id}
+								todo={todo}
+								deleteTodo={() => deleteTodo(index)}
+							/>
 						))}
 					</ul>
 				</div>
