@@ -1,2 +1,0 @@
-# filterReactTodo
-Created with CodeSandbox
