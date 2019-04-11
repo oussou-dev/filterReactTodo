@@ -4,18 +4,6 @@ import Filter from "./Filter"
 import Search from "./Search"
 
 class TodoList extends React.Component {
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			todos: [
-				{ id: 1, name: "Learn JS", completed: false },
-				{ id: 2, name: "Learn React", completed: false },
-				{ id: 3, name: "Learn Redux", completed: false }
-			]
-		}
-	}
-
 	render() {
 		return (
 			<div className="card">
@@ -33,7 +21,7 @@ class TodoList extends React.Component {
 
 				<div className="card-body">
 					<ul className="list-group">
-						{this.state.todos.map(todo => (
+						{this.props.todos.map(todo => (
 							<TodoItem key={todo.id} todo={todo} />
 						))}
 					</ul>
