@@ -2,7 +2,13 @@ import React from "react"
 
 class AddTodo extends React.Component {
 	render() {
-		const { addTodo, handleChange, newInput } = this.props
+		const {
+			addTodo,
+			handleChange,
+			newInput,
+			updateTodo,
+			index
+		} = this.props
 		// console.log(handleChange)
 		return (
 			<div className="d-flex mb-4">
@@ -13,9 +19,22 @@ class AddTodo extends React.Component {
 					value={newInput}
 					onChange={handleChange}
 				/>
-				<button className="btn btn-success" onClick={() => addTodo()}>
-					Add
-				</button>
+
+				{this.props.editingMode ? (
+					<button
+						className="btn btn-success"
+						onClick={() => addTodo()}
+					>
+						Add
+					</button>
+				) : (
+					<button
+						className="btn btn-info"
+						onClick={() => updateTodo(index)}
+					>
+						Update
+					</button>
+				)}
 			</div>
 		)
 	}

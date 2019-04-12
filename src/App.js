@@ -8,6 +8,8 @@ class App extends React.Component {
 
 		this.state = {
 			newInput: "",
+			editingMode: false,
+			editingIndex: null,
 			todos: [
 				{ id: 1, name: "Learn JS", completed: false },
 				{ id: 2, name: "Learn React", completed: false },
@@ -53,6 +55,26 @@ class App extends React.Component {
 		})
 	}
 
+	editTodo = index => {
+		const newEditingMode = !this.state.editingMode
+		this.setState({
+			editingMode: newEditingMode,
+			newInput: this.state.todos[index].name,
+			editingIndex: index
+		})
+	}
+
+	updateTodo = () => {
+		const todos = [...this.state.todos]
+		const editingTodo = todos[this.state.editingIndex]
+		editingTodo.name = this.state.newInput
+		this.setState({
+			todos: todos,
+			editingMode: null,
+			newInput: ""
+		})
+	}
+
 	deleteTodo = index => {
 		const todoIdToDelete = this.state.todos[index].id
 		const actualTodos = this.state.todos
@@ -71,19 +93,28 @@ class App extends React.Component {
 			<div className="container p-3">
 				<div className="jumbotron p-2">
 					<h1 className="display-4 text-center">Todo List</h1>
-					<p className="lead text-center">ReactJS & Bootstrap 4</p>
+					<p className="lead text-center">
+						<span style={{ fontSize: "15px" }}>
+							ReactJS / Bootstrap 4 / Axios
+						</span>
+					</p>
 				</div>
 
 				<AddTodo
 					addTodo={this.addTodo}
 					handleChange={this.handleChange}
 					newInput={this.state.newInput}
+					editingMode={!this.state.editingMode}
+					updateTodo={this.updateTodo}
 				/>
 
-				<TodoList
-					todos={this.state.todos}
-					deleteTodo={this.deleteTodo}
-				/>
+				{!this.state.editingMode && (
+					<TodoList
+						todos={this.state.todos}
+						deleteTodo={this.deleteTodo}
+						editTodo={this.editTodo}
+					/>
+				)}
 				<br />
 			</div>
 		)
