@@ -14,7 +14,8 @@ class App extends React.Component {
 				{ id: 1, name: "Learn JS", completed: false },
 				{ id: 2, name: "Learn React", completed: false },
 				{ id: 3, name: "Learn Redux", completed: false }
-			]
+			],
+			notification: null
 		}
 	}
 
@@ -31,7 +32,7 @@ class App extends React.Component {
 			return 1
 		} else {
 			const newID =
-				this.state.todos[this.state.todos.length - 1].id + 1
+				this.state.todos[this.state.todos.length - 1].id + 1 // => lastTod.id + 1
 			// console.log(newID)
 			return newID
 		}
@@ -53,6 +54,7 @@ class App extends React.Component {
 			todos: finalTodos,
 			newInput: ""
 		})
+		this.alert("Todo added sucessfully")
 	}
 
 	editTodo = index => {
@@ -73,6 +75,7 @@ class App extends React.Component {
 			editingMode: null,
 			newInput: ""
 		})
+		this.alert("Todo updated sucessfully")
 	}
 
 	deleteTodo = index => {
@@ -84,7 +87,22 @@ class App extends React.Component {
 
 		this.setState({
 			todos: finalTodos
+			// notification: "Todo deleted sucessfully"
 		})
+
+		this.alert("Todo deleted sucessfully")
+	}
+
+	alert = notification => {
+		this.setState({
+			notification
+		})
+
+		setTimeout(() => {
+			this.setState({
+				notification: null
+			})
+		}, 1300)
 	}
 
 	render() {
@@ -99,6 +117,16 @@ class App extends React.Component {
 						</span>
 					</p>
 				</div>
+
+				{/* <div className="container"> */}
+				{this.state.notification && (
+					<div className="alert alert-success">
+						<p className="text-center my-auto">
+							{this.state.notification}
+						</p>
+					</div>
+				)}
+				{/* </div> */}
 
 				<AddTodo
 					addTodo={this.addTodo}
