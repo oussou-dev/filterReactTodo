@@ -105,6 +105,16 @@ class App extends React.Component {
 		}, 1300)
 	}
 
+	todoCompleted = (e, index) => {
+		// console.log(e.target.checked)
+		const todos = [...this.state.todos]
+		todos[index].completed = e.target.checked
+		console.log(todos)
+		this.setState({
+			todos
+		})
+	}
+
 	render() {
 		// console.log(this.state.todos)
 		return (
@@ -141,6 +151,7 @@ class App extends React.Component {
 						todos={this.state.todos}
 						deleteTodo={this.deleteTodo}
 						editTodo={this.editTodo}
+						todoCompleted={this.todoCompleted}
 					/>
 				)}
 				<br />

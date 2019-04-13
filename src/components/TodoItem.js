@@ -1,12 +1,27 @@
 import React from "react"
 
-const TodoItem = ({ todo, deleteTodo, editTodo, index }) => {
+const TodoItem = ({
+	todo,
+	deleteTodo,
+	editTodo,
+	index,
+	todoCompleted
+}) => {
 	return (
 		<li className="list-group-item d-flex flex-row justify-content-between align-items-center list-group mt-2">
-			<span>{todo.name}</span>
+			<span
+				style={{
+					textDecoration: todo.completed ? "line-through" : "inherit"
+				}}
+			>
+				{todo.name}
+			</span>
 			<span>
-				{/* <span className="far fa-circle mr-3" /> */}
-				<input className="mr-3" type="checkbox" />
+				<input
+					className="mr-3"
+					type="checkbox"
+					onChange={e => todoCompleted(e, index)}
+				/>
 				<button
 					className="btn-sm btn-info mr-2"
 					onClick={() => editTodo(index)}

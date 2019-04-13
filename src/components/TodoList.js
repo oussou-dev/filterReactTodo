@@ -9,7 +9,7 @@ class TodoList extends React.Component {
 	// }
 
 	render() {
-		const { todos, deleteTodo, editTodo } = this.props
+		const { todos, deleteTodo, editTodo, todoCompleted } = this.props
 		return (
 			<div className="card">
 				<div className="card-header d-flex flex-row align-items-center">
@@ -32,6 +32,7 @@ class TodoList extends React.Component {
 								todo={todo}
 								deleteTodo={() => deleteTodo(index)}
 								editTodo={() => editTodo(index)}
+								todoCompleted={e => todoCompleted(e, index)}
 							/>
 						))}
 					</ul>
