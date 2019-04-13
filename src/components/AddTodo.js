@@ -9,7 +9,7 @@ class AddTodo extends React.Component {
 			updateTodo,
 			index
 		} = this.props
-		// console.log(handleChange)
+		console.log(newInput.length)
 		return (
 			<div className="d-flex mb-4">
 				<input
@@ -24,6 +24,7 @@ class AddTodo extends React.Component {
 					<button
 						className="btn btn-success"
 						onClick={() => addTodo()}
+						disabled={newInput.length < 5}
 					>
 						Add
 					</button>
