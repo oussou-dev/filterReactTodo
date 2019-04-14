@@ -10,12 +10,11 @@ class App extends React.Component {
 			newInput: "",
 			editingMode: false,
 			editingIndex: null,
+			filter: "all",
 			todos: [
 				{ id: 1, name: "JavaScript", completed: false },
-				{ id: 2, name: "React.js", completed: false },
-				{ id: 3, name: "Redux", completed: false },
-				{ id: 4, name: "Node.js & Express.js", completed: false },
-				{ id: 5, name: "MongoDB & PostgreSQL", completed: false }
+				{ id: 2, name: "Python", completed: false },
+				{ id: 3, name: "Sodidity", completed: false }
 			],
 			notification: null
 		}
@@ -137,6 +136,12 @@ class App extends React.Component {
 	// 	})
 	// }
 
+	setFilter = filter => {
+		this.setState({
+			filter: filter
+		})
+	}
+
 	render() {
 		// console.log(this.state.todos)
 		return (
@@ -175,6 +180,8 @@ class App extends React.Component {
 						editTodo={this.editTodo}
 						todoCompleted={this.todoCompleted}
 						// searchTodo={this.searchTodo}
+						setFilter={this.setFilter}
+						currentFilter={this.state.filter}
 					/>
 				)}
 				<br />

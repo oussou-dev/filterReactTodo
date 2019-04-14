@@ -24,12 +24,25 @@ class TodoList extends React.Component {
 			todos,
 			deleteTodo,
 			editTodo,
-			todoCompleted
+			todoCompleted,
+			setFilter,
+			currentFilter
 			// searchTodo
 		} = this.props
 
-		// Filter la liste des todos en fonction des lettres saisies
-		let searchingTodos = todos.filter(todo => {
+		// Filter la liste des todos en fontion des 3 filtres
+		const todosToShow = todos.filter(todo => {
+			if (currentFilter === "all") {
+				return true
+			} else if (currentFilter === "doing") {
+				return !todo.completed
+			} else {
+				return todo.completed
+			}
+		})
+
+		// Trier la liste des todos en fonction des lettres saisies
+		let searchingTodos = todosToShow.filter(todo => {
 			return (
 				todo.name
 					.toLocaleLowerCase()
@@ -55,7 +68,10 @@ class TodoList extends React.Component {
 					</span>
 
 					<Search searchTodo={this.updateSearchQuery} />
-					<Filter />
+					<Filter
+						setFilter={setFilter}
+						currentFilter={currentFilter}
+					/>
 				</div>
 
 				<div className="card-body">
