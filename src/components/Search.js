@@ -1,6 +1,6 @@
 import React from "react"
 
-const Search = props => {
+const Search = ({ searchTodo }) => {
 	return (
 		<>
 			<input
@@ -8,6 +8,7 @@ const Search = props => {
 				type="text"
 				className="mr-5 form-control"
 				placeholder="Search"
+				onChange={searchTodo}
 			/>
 		</>
 	)

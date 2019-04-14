@@ -11,9 +11,11 @@ class App extends React.Component {
 			editingMode: false,
 			editingIndex: null,
 			todos: [
-				{ id: 1, name: "Learn JS", completed: false },
-				{ id: 2, name: "Learn React", completed: false },
-				{ id: 3, name: "Learn Redux", completed: false }
+				{ id: 1, name: "JavaScript", completed: false },
+				{ id: 2, name: "React.js", completed: false },
+				{ id: 3, name: "Redux", completed: false },
+				{ id: 4, name: "Node.js & Express.js", completed: false },
+				{ id: 5, name: "MongoDB & PostgreSQL", completed: false }
 			],
 			notification: null
 		}
@@ -115,6 +117,26 @@ class App extends React.Component {
 		})
 	}
 
+	// searchTodo = query => {
+	// 	// console.log(query)
+	// 	const queryTodo = query.target.value.toLowerCase()
+	// 	console.log(queryTodo)
+	// 	const actualTodos = [...this.state.todos]
+	// 	const finalTodos = actualTodos.filter(todo => {
+	// 		// if (queryTodo.length > 0) {
+	// 		// 	return todo.name.toLowerCase() === queryTodo
+	// 		// } else {
+	// 		// 	return todo
+	// 		// }
+	// 		return todo.name.indexOf(queryTodo) !== -1
+	// 	})
+
+	// 	console.log(finalTodos)
+	// 	this.setState({
+	// 		todos: finalTodos
+	// 	})
+	// }
+
 	render() {
 		// console.log(this.state.todos)
 		return (
@@ -152,6 +174,7 @@ class App extends React.Component {
 						deleteTodo={this.deleteTodo}
 						editTodo={this.editTodo}
 						todoCompleted={this.todoCompleted}
+						// searchTodo={this.searchTodo}
 					/>
 				)}
 				<br />
