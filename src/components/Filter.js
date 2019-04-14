@@ -27,7 +27,6 @@ const Filter = ({ setFilter, currentFilter }) => {
 			>
 				Done
 			</button>
-			<button className="btn btn-danger mr-2">Clear</button>
 		</>
 	)
 }

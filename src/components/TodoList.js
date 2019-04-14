@@ -2,6 +2,7 @@ import React from "react"
 import TodoItem from "./TodoItem"
 import Filter from "./Filter"
 import Search from "./Search"
+import ClearTodos from "./ClearTodos"
 
 class TodoList extends React.Component {
 	constructor(props) {
@@ -26,8 +27,9 @@ class TodoList extends React.Component {
 			editTodo,
 			todoCompleted,
 			setFilter,
-			currentFilter
+			currentFilter,
 			// searchTodo
+			clearAll
 		} = this.props
 
 		// Filter la liste des todos en fontion des 3 filtres
@@ -68,10 +70,13 @@ class TodoList extends React.Component {
 					</span>
 
 					<Search searchTodo={this.updateSearchQuery} />
+
 					<Filter
 						setFilter={setFilter}
 						currentFilter={currentFilter}
 					/>
+
+					<ClearTodos clearAll={clearAll} />
 				</div>
 
 				<div className="card-body">

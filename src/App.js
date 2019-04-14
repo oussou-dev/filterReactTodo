@@ -142,6 +142,13 @@ class App extends React.Component {
 		})
 	}
 
+	// Vider la Todo List
+	clearHandler = () => {
+		this.setState({
+			todos: []
+		})
+	}
+
 	render() {
 		// console.log(this.state.todos)
 		return (
@@ -182,6 +189,7 @@ class App extends React.Component {
 						// searchTodo={this.searchTodo}
 						setFilter={this.setFilter}
 						currentFilter={this.state.filter}
+						clearAll={this.clearHandler}
 					/>
 				)}
 				<br />
